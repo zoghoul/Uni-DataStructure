@@ -1,0 +1,26 @@
+Book 335
+PDF  352
+
+template<class ItemType>
+void FindItem(NodeType<ItemType>* listData, ItemType item,
+NodeType<ItemType>*& location, NodeType<ItemType>*& predLoc,
+bool& found)
+{
+bool moreToSearch = true;
+location = listData->next;
+predLoc = listData;
+found = false;
+while (moreToSearch && !found)
+{
+if (item < location->info)
+moreToSearch = false;
+else if (item == location->info)
+found = true;
+else
+{
+predLoc = location;
+location = location->next;
+moreToSearch = (location != listData->next);
+}
+}
+}
